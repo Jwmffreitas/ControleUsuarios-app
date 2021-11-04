@@ -15,11 +15,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Map? data;
+  List? usersData;
+
   getUsers() async {
     http.Response response =
         await http.get(Uri.parse('http://192.168.1.8:5000/api/users'));
     debugPrint(response.body);
-    json.decode(response.body);
+    data = json.decode(response.body);
+    setState(() {
+      usersData = data?['users'];
+    });
   }
 
   @override
@@ -34,7 +40,39 @@ class _HomePageState extends State<HomePage> {
         title: Text('Users List'),
         backgroundColor: Colors.indigo[900],
       ),
-      //body: ListView.builder(),
+      body: ListView.builder(
+        itemCount: usersData == null ? 0 : usersData?.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "$index",
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(usersData?[index]['avatar']),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                      "${usersData?[index]["firstName"]} ${usersData?[index]["lastName"]}",
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w700),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
