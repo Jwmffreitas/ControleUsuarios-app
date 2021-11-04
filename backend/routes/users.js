@@ -7,7 +7,7 @@ const faker = require('faker')
 
 router.get('/api/users', async (req, res) => {
     const users = await User.findAll()
-    res.json({users})
+    res.json({users: users})
 })
 
 router.get('/api/users/create', async (req, res) => {
