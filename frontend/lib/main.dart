@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
 
   getUsers() async {
     http.Response response =
-        await http.get(Uri.parse('http://192.168.1.8:5000/api/users'));
+        await http.get(Uri.parse('http://yourIP:serverPort/api/users'));
     debugPrint(response.body);
     data = json.decode(response.body);
     setState(() {
