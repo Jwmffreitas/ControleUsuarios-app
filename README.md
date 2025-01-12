@@ -19,7 +19,7 @@ Front - Construído dentro da Classe HomePage, da qual possui um metódo respons
 # Imagem da aplicação:
 
 <h1 align="left">
-  <img alt="Home" src="https://media.discordapp.net/attachments/906313617442476114/906330954338017310/unknown.png?ex=660754fa&is=65f4dffa&hm=81c93c710530bef265f30a9855500f816bee0e471313fe8a1b0186ab24c6d87a&=&format=webp&quality=lossless&width=746&height=468" width="800px" />
+  <img alt="Home" src="https://github.com/Jwmffreitas/ControleUsuarios-app/blob/main/public/img/running.png" width="800px" />
 </h1>
 
 ## :hammer: Tecnologias
